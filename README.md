@@ -2,9 +2,9 @@
 
 ## Prévia
 
-<img src="./desktop-home.png" width=200 margin=30 /> <img src="./desktop-signin.png" width=200 margin=30 /> <img src="./desktop-client.png" width=200 margin=30 />
+<img src="./desktop-home.png" width=200 /> <img src="./desktop-signin.png" width=200 /> <img src="./desktop-client.png" width=200 />
 ​
-<img src="./mobile-signin.png" width=200 margin=30 /> <img src="./mobile-login.png" width=200 margin=30 /> <img src="./mobile-client.png" width=200 margin=30 />
+<img src="./mobile-signin.png" width=200 /> <img src="./mobile-login.png" width=200 /> <img src="./mobile-client.png" width=200 />
 
 ## Tecnologias
 
@@ -47,5 +47,6 @@ docker-compose up
 
 ```
 cd frontend
-docker-compose up
+npm install
+npm start
 ```
