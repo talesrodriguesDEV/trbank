@@ -19,6 +19,8 @@ export default function Signin() {
         body: JSON.stringify({ fullName, CPF, password, balance }),
       });
 
+    window.alert('Conta criada com sucesso!');
+
     navigate('/');
   }
 
@@ -39,24 +41,24 @@ export default function Signin() {
   }
 
   return (
-    <form className='flex flex-col justify-center' onSubmit={addNewClient}>
+    <form className='flex flex-col justify-center text-2xl px-2' onSubmit={addNewClient}>
       <label>
         Nome completo:
       </label>
-      <input onChange={({ target }) => setName(target.value)} required minLength={10} />
+      <input className='input' onChange={({ target }) => setName(target.value)} required minLength={10} />
       <label>
         CPF:
       </label>
-      <input onChange={handleCPF} type='number' maxLength={11} />
+      <input className='input' onChange={handleCPF} type='number' maxLength={11} />
       <label>
         Senha:
       </label>
-      <input onChange={({ target }) => setPassword(target.value)} type='password' minLength={5} />
+      <input className='input' onChange={({ target }) => setPassword(target.value)} type='password' minLength={5} />
       <label>
         Depósito inicial (min R$ 100,00):
       </label>
-      <input onChange={({ target }) => setBalance(Number(target.value))} type='number' min="100" />
-      <button type='submit'>Finalizar</button>
+      <input className='input' onChange={({ target }) => setBalance(Number(target.value))} type='number' min="100" />
+      <button className='button' type='submit'>Finalizar</button>
     </form>
   )
 }

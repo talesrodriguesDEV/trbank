@@ -61,7 +61,7 @@ export default function Client() {
   };
 
   const grantMoney = () => {
-    const receiverId = (clients.find(({ CPF }) => CPF === receiverCPF) || { _id: '' })._id;
+    const receiverId = (clients.find(({ CPF }) => CPF === receiverCPF) || { _id: '1' })._id;
 
     fetch('http://localhost:3001/transactions/new',
       {
@@ -69,7 +69,7 @@ export default function Client() {
         headers: { 'Authorization': token as string, 'Content-Type': 'application/json' },
         body: JSON.stringify({ value, receiver: receiverId, donor: clientId }),
       }).then(response => response.json()).then(json => window.alert(json.message));
-    
+
     window.location.reload();
   };
 
@@ -90,26 +90,29 @@ export default function Client() {
   }
 
   return (
-    <>
-      <h1>Olá, {name}</h1>
-      <div>Saldo: R$ {balance.toFixed(2)}</div>
-      <input onChange={({ target }) => setValue(Number(target.value))} type='number' min={1} />
-      <button onClick={() => handleSoloTransaction(true)}>Sacar</button>
-      <button onClick={() => handleSoloTransaction(false)}>Depositar</button>
-      <button onClick={() => setReceiverInput(!receiverInput)}>Transferir</button>
+    <div className='text-3xl px-4 flex flex-col'>
+      <h1 className='text-4xl mt-4'>Olá, {name}!</h1>
+      <div>Saldo: <span className='text-amber-700'>R$ {balance.toFixed(2)}</span></div>
+      <div className='border my-3 py-3 px-2 rounded-lg border-white text-center'>
+        <label className='text-2xl'>Escolha o valor de sua próxima transação: </label>
+        <input className='input mb-0' onChange={({ target }) => setValue(Number(target.value))} type='number' min={1} />
+      </div>
+      <button className='button' onClick={() => handleSoloTransaction(true)}>Sacar</button>
+      <button className='button' onClick={() => handleSoloTransaction(false)}>Depositar</button>
+      <button className='button' onClick={() => setReceiverInput(!receiverInput)}>Transferir</button>
       {receiverInput && (
-        <div>
-          <input id="receiverCPF" onChange={handleCPF} />
-          <button onClick={grantMoney}>Confirmar</button>
+        <div className='border flex flex-col mt-3 mb-1 py-2 px-2 rounded-lg'>
+          <input type='number' placeholder='Pessoa Recebedora' className='input mb-0 placeholder-amber-700 placeholder-opacity-60' id="receiverCPF" onChange={handleCPF} />
+          <button className='button' onClick={grantMoney}>Confirmar</button>
         </div>
       )}
-      <button onClick={() => setTransactions(!transactions)}>Exibir transações</button>
+      <button className='button' onClick={() => setTransactions(!transactions)}>Transações</button>
       {transactions && (
-        <div>
-          <TransactionsTable title={'Débito'} otherPerson={'Pessoa Recebedora'} transactions={debitTransactions} />
-          <TransactionsTable title={'Cŕedito'} otherPerson={'Pessoa Doadora'} transactions={creditTransactions} />
+        <div className='flex flex-col'>
+          <TransactionsTable title={'Débito'} otherPerson={'Receb.'} transactions={debitTransactions} debit />
+          <TransactionsTable title={'Crédito'} otherPerson={'Doadora'} transactions={creditTransactions} debit={false} />
         </div>
       )}
-    </>
+    </div>
   );
 }

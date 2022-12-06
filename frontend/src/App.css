@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nerko One', cursive;
+}
+
+@layer components {
+  .button {
+    @apply py-2 px-5 mt-2 rounded-lg bg-amber-600 hover:bg-amber-700
+  }
+
+  .input {
+    @apply mb-3 text-amber-700 p-2 rounded-lg
+  }
+}

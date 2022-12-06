@@ -33,25 +33,26 @@ export default function Login () {
         body: JSON.stringify({ CPF, password }),
       }).then(response => response.json()).then(json => {
         if (json.message) window.alert(json.message);
-
-        localStorage.setItem('token', json.token);
-        localStorage.setItem('cpf', CPF);
-
-        navigate('/client');
+        else {
+          localStorage.setItem('token', json.token);
+          localStorage.setItem('cpf', CPF);
+  
+          navigate('/client');
+        }
       });
   }
 
   return (
-    <form onSubmit={doLogin}>
+    <form className='flex flex-col justify-center text-3xl px-2' onSubmit={doLogin}>
       <label>
         CPF:
       </label>
-      <input onChange={handleCPF} type='number' maxLength={11} />
+      <input className='input' onChange={handleCPF} type='number' maxLength={11} />
       <label>
         Senha:
       </label>
-      <input onChange={({ target }) => setPassword(target.value)} type='password' minLength={5} />
-      <button type='submit'>Finalizar</button>
+      <input className='input' onChange={({ target }) => setPassword(target.value)} type='password' minLength={5} />
+      <button className='button' type='submit'>Finalizar</button>
     </form>
   )
 }
