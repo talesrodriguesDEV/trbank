@@ -3,7 +3,7 @@
 ## Prévia
 
 <img src="./desktop-home.png" width=200 /> <img src="./desktop-signin.png" width=200 /> <img src="./desktop-client.png" width=200 />
-​
+<br />
 <img src="./mobile-signin.png" width=200 /> <img src="./mobile-login.png" width=200 /> <img src="./mobile-client.png" width=200 />
 
 ## Tecnologias
@@ -12,6 +12,7 @@
 1. React (Hooks, Router)
 2. Tailwind CSS
 3. TypeScript
+4. Responsividade
 
 ### Back-end
 1. Node
